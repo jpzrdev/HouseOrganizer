@@ -6,13 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AllHouse.Application.Queries
+namespace AllHouse.Application.Queries.HouseMembers.GetHouseMemberById
 {
-    public class GetHouseTaskByIdQuery : IRequest<HouseTask>
+    public class GetHouseMemberByIdQuery : IRequest<IEnumerable<HouseMember>>
     {
         public Guid Id { get; set; }
-
-        public GetHouseTaskByIdQuery(Guid id)
+        public GetHouseMemberByIdQuery(Guid id)
         {
             Id = id;
         }

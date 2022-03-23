@@ -13,5 +13,9 @@ namespace AllHouse.Infrastructure.Data.Context
         public AllHouseContext(DbContextOptions<AllHouseContext> options) : base(options) { }
 
         public DbSet<HouseTask> HouseTasks { get; set; }
+        public DbSet<HouseMember> HouseMembers { get; set; }
+        public DbSet<HouseTaskManagement> HouseTaskManagements { get; set; }
+
+
     }
 }

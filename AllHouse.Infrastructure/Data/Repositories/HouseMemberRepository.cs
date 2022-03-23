@@ -10,17 +10,17 @@ using System.Threading.Tasks;
 
 namespace AllHouse.Infrastructure.Data.Repositories
 {
-    public class HouseTaskRepository : IHouseTaskRepository
+    public class HouseMemberRepository : IHouseMemberRepository
     {
         private AllHouseContext _context;
-        public HouseTaskRepository(AllHouseContext context)
+        public HouseMemberRepository(AllHouseContext context)
         {
             _context = context;
         }
 
-        public async Task<HouseTask> Create(HouseTask item)
+        public async Task<HouseMember> Create(HouseMember item)
         {
-            var entityEntry = await _context.HouseTasks.AddAsync(item);
+            var entityEntry = await _context.HouseMembers.AddAsync(item);
             await _context.SaveChangesAsync();
 
             return entityEntry.Entity;
@@ -28,26 +28,25 @@ namespace AllHouse.Infrastructure.Data.Repositories
 
         public async Task<Guid> Delete(Guid id)
         {
-            var houseTask = await _context.HouseTasks.FindAsync(id);
-            _context.HouseTasks.Remove(houseTask);
+            var entity = await _context.HouseMembers.FindAsync(id);
+            _context.HouseMembers.Remove(entity);
             await _context.SaveChangesAsync();
-            return houseTask.Id;
-
+            return entity.Id;
         }
 
-        public async Task<IEnumerable<HouseTask>> GetAll()
+        public async Task<IEnumerable<HouseMember>> GetAll()
         {
-            return await _context.HouseTasks.ToListAsync();
+            return await _context.HouseMembers.Include(x => x.Tasks).ToListAsync();
         }
 
-        public async Task<HouseTask> GetById(Guid id)
+        public async Task<HouseMember> GetById(Guid id)
         {
-            return await _context.HouseTasks.FindAsync(id);
+            return await _context.HouseMembers.FindAsync(id);
         }
 
-        public async Task<HouseTask> Update(HouseTask item)
+        public async Task<HouseMember> Update(HouseMember item)
         {
-            var entityEntry = _context.HouseTasks.Update(item);
+            var entityEntry = _context.HouseMembers.Update(item);
             await _context.SaveChangesAsync();
             return entityEntry.Entity;
         }

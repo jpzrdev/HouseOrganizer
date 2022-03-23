@@ -23,7 +23,7 @@ namespace AllHouse.Application.Comands.HouseTasks.CreateHouseTask
                 Name = request.Name
             };
 
-            return await _houseTaskRepository.CreateHouseTask(houseTask);
+            return await _houseTaskRepository.Create(houseTask);
         }
     }
 }

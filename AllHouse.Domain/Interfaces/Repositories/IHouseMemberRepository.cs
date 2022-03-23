@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AllHouse.Domain.Interfaces.Repositories
 {
-    public interface IHouseTaskRepository : IBaseRepository<HouseTask>
+    public interface IHouseMemberRepository : IBaseRepository<HouseMember>
     {
     }
 }

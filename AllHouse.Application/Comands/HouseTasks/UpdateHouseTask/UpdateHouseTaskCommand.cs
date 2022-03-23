@@ -6,15 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AllHouse.Application.Queries
+namespace AllHouse.Application.Comands.HouseTasks.DeleteHouseTask
 {
-    public class GetHouseTaskByIdQuery : IRequest<HouseTask>
+    public class UpdateHouseTaskCommand : IRequest<HouseTask>
     {
         public Guid Id { get; set; }
-
-        public GetHouseTaskByIdQuery(Guid id)
-        {
-            Id = id;
-        }
+        public string Name { get; set; }
     }
 }

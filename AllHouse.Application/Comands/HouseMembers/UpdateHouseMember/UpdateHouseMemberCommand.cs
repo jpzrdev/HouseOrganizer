@@ -6,15 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AllHouse.Application.Queries
+namespace AllHouse.Application.Comands.HouseMembers.UpdateHouseMember
 {
-    public class GetHouseTaskByIdQuery : IRequest<HouseTask>
+    public class UpdateHouseMemberCommand : IRequest<HouseMember>
     {
         public Guid Id { get; set; }
-
-        public GetHouseTaskByIdQuery(Guid id)
-        {
-            Id = id;
-        }
+        public string Name { get; set; }
+        public string Nick { get; set; }
     }
 }

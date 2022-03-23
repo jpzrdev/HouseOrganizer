@@ -17,9 +17,9 @@ namespace AllHouse.Application.Queries.Tasks.GetAllTasks
             _houseTaskRepository = houseTaskRepository;
         }
 
-        public Task<IEnumerable<HouseTask>> Handle(GetAllHouseTasksQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<HouseTask>> Handle(GetAllHouseTasksQuery request, CancellationToken cancellationToken)
         {
-            return _houseTaskRepository.GetAllHouseTasks();
+            return await _houseTaskRepository.GetAll(); ;
         }
     }
 }

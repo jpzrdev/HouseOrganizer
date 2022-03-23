@@ -1,4 +1,5 @@
 ﻿using AllHouse.Application.Comands.HouseTasks.CreateHouseTask;
+using AllHouse.Application.Comands.HouseTasks.DeleteHouseTask;
 using AllHouse.Application.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -20,13 +21,31 @@ namespace AllHouse.API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            return Ok(_mediator.Send(new GetAllHouseTasksQuery()).Result);
+            return Ok(await _mediator.Send(new GetAllHouseTasksQuery()));
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(Guid houseTaskId)
+        {
+            return Ok(await _mediator.Send(new GetHouseTaskByIdQuery(houseTaskId)));
         }
 
         [HttpPost]
         public async Task<IActionResult> CreateHouseTask([FromBody] CreateHouseTaskCommand createHouseTaskCommand)
         {
-            return Ok(_mediator.Send(createHouseTaskCommand).Result);
+            return Ok(await _mediator.Send(createHouseTaskCommand));
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> UpdateHouseTask([FromBody] UpdateHouseTaskCommand updateHouseTaskCommand)
+        {
+            return Ok(await _mediator.Send(updateHouseTaskCommand));
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> DeleteHouseTask([FromBody] DeleteHouseTaskCommand deleteHouseMemberCommand)
+        {
+            return Ok(await _mediator.Send(deleteHouseMemberCommand));
         }
     }
 }

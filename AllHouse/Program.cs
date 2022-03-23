@@ -1,5 +1,7 @@
 using AllHouse.Application.Queries;
+using AllHouse.Application.Services;
 using AllHouse.Domain.Interfaces.Repositories;
+using AllHouse.Domain.Interfaces.Services;
 using AllHouse.Infrastructure.Data.Context;
 using AllHouse.Infrastructure.Data.Repositories;
 using MediatR;
@@ -24,6 +26,9 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddMediatR(typeof(GetAllHouseTasksQuery));
 
 builder.Services.AddTransient<IHouseTaskRepository, HouseTaskRepository>();
+builder.Services.AddTransient<IHouseMemberRepository, HouseMemberRepository>();
+builder.Services.AddTransient<IHouseTaskManagementRepository, HouseTaskManagementRepository>();
+builder.Services.AddTransient<IHouseTaskManagementService, HouseTaskManagementService>();
 
 var app = builder.Build();
 
