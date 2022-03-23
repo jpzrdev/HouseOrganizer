@@ -55,9 +55,9 @@ namespace AllHouse.Application.Services
                             DayOfWeek = day
                         };
                         returnList.Add(await _houseTaskManagementRepository.Create(houseTaskManagement));
-
+                        break;
                     }
-                    break;
+                    
                 }
             }
 
