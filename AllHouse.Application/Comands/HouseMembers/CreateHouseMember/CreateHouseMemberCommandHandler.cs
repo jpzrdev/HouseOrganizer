@@ -9,14 +9,14 @@ using System.Threading.Tasks;
 
 namespace AllHouse.Application.Comands.HouseMembers.CreateHouseMember
 {
-    public class CreateHouseMemberCommandHandler : IRequestHandler<CreateHouseMemberCommand, HouseMember>
+    public class CreateHouseMemberCommandHandler : IRequestHandler<CreateHouseMemberCommand, CreateHouseMemberResponse>
     {
         private readonly IHouseMemberRepository _houseMemberRepository;
         public CreateHouseMemberCommandHandler(IHouseMemberRepository houseMemberRepository)
         {
             _houseMemberRepository = houseMemberRepository;
         }
-        public async Task<HouseMember> Handle(CreateHouseMemberCommand request, CancellationToken cancellationToken)
+        public async Task<CreateHouseMemberResponse> Handle(CreateHouseMemberCommand request, CancellationToken cancellationToken)
         {
             var houseMember = new HouseMember
             {
@@ -25,7 +25,17 @@ namespace AllHouse.Application.Comands.HouseMembers.CreateHouseMember
                 IsActive = true
             };
 
-            return await _houseMemberRepository.Create(houseMember);
+            var houseMemberEntity = await _houseMemberRepository.Create(houseMember);
+
+            var createHouseMemberReponse = new CreateHouseMemberResponse
+            {
+                Id = houseMemberEntity.Id,
+                Name = houseMemberEntity.Name,
+                Nick = houseMemberEntity.Nick,
+                IsActive = houseMemberEntity.IsActive
+            };
+
+            return createHouseMemberReponse;
         }
     }
 }

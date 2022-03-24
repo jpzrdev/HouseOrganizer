@@ -32,19 +32,19 @@ namespace AllHouse.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateHouseTask([FromBody] CreateHouseMemberCommand createHouseTaskCommand)
+        public async Task<IActionResult> Create([FromBody] CreateHouseMemberCommand createHouseTaskCommand)
         {
             return Ok(await _mediator.Send(createHouseTaskCommand));
         }
 
         [HttpPut]
-        public async Task<IActionResult> UpdateHouseTask([FromBody] UpdateHouseMemberCommand updateHouseTaskCommand)
+        public async Task<IActionResult> Update([FromBody] UpdateHouseMemberCommand updateHouseTaskCommand)
         {
             return Ok(await _mediator.Send(updateHouseTaskCommand));
         }
 
         [HttpDelete]
-        public async Task<IActionResult> DeleteHouseTask([FromBody] DeleteHouseMemberCommand deleteHouseMemberCommand)
+        public async Task<IActionResult> Delete([FromBody] DeleteHouseMemberCommand deleteHouseMemberCommand)
         {
             return Ok(await _mediator.Send(deleteHouseMemberCommand));
         }

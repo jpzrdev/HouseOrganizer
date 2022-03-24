@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AllHouse.Application.Comands.HouseMembers.CreateHouseMember
 {
-    public class CreateHouseMemberCommand : IRequest<HouseMember>
+    public class CreateHouseMemberCommand : IRequest<CreateHouseMemberResponse>
     {
         public string Name { get; set; }
         public string Nick { get; set; }
